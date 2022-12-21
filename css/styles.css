@@ -1,0 +1,143 @@
+main {    
+    font-family: "Consolas";
+}
+
+body{
+    background-color: rgb(255, 255, 255);
+    /* animation-name: bodyAnimation;
+    animation-duration: 20s;
+    animation-iteration-count: infinite; */
+}
+/* 
+@keyframes bodyAnimation {
+    0%   {background-color: rgb(91, 141, 141);}
+    33%  {background-color: rgb(189, 98, 98);}
+    66%  {background-color: rgb(148, 177, 92);}
+    100% {background-color: rgb(91, 141, 141);}
+} */
+
+header {
+    display: flex;
+    align-content: space-between;
+    justify-content: space-between;
+    align-items: center;
+
+    height: 5em;
+    border-width: 33px;
+    box-shadow: 2px 2px 7px rgb(0 0 0 / 5%);
+    height: 2em;
+    top: 1em;
+    background: rgb(250, 250, 250);
+    /* font-family: Menlo,monospace; */
+    /* font-style: italic; */
+    border-radius: 9px;
+    border: 3px solid #000;
+    margin-top: 2em;
+    padding: 8px;
+}
+
+a:link {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    color: darkblue;
+}
+
+a:visited {
+    color: black;
+}
+
+#inMenuFirst {
+    margin: 5px 0.2em;
+    flex: 1;
+    font-size: 20px;
+}
+
+#inMenuSecond {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 20px;
+    color: #333333;
+    font-family: monospace;
+}
+
+#inMenuItem {
+    padding: 10px;
+}
+
+#about {
+    /* padding: 5px; */
+    font-size: 15px;
+}
+
+#mainGrid {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 30px;
+    background-color: rgb(235, 152, 153);
+}
+
+#imgs {
+    height: auto;
+    max-height: 100%;
+    max-width: 100%;
+}
+
+#trigger {
+    position: absolute;
+    width: 20%;
+    /* height: 20%; */
+}
+
+#projectPresentation {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.class1 {
+    background: white;
+    border-radius: 40px 3px 40px 3px;
+    -webkit-box-shadow: inset 0px 1px 15px 5px rgba(0, 0, 0, 0.57);
+    box-shadow: inset 0px 1px 15px 2px rgba(0, 0, 0, 0.57);
+    margin: 10px auto 0;
+}
+
+.class2 {
+    align-content: center;
+    border-radius: 5px 5px 5px 5px;
+    -webkit-box-shadow: 0px 0.5em 15px 0.01em rgba(0, 0, 0, 0.57);
+    box-shadow: 0px 0.5em 15px 0.01em rgba(0, 0, 0, 0.57);
+}
+
+.gridElement {
+    width: 33.3%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.gridElementPrjs {
+    width: 33.3%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.thumbnail {
+    transform: scale(3);
+    cursor: pointer;
+    -webkit-transition-property: all;
+            transition-property: all;
+    -webkit-transition-duration: 0.2s;
+            transition-duration: 0.2s;
+    -webkit-transition-timing-function: ease;
+            transition-timing-function: ease;
+}
+
+/*change the number below to scale to the appropriate size*/
+.thumbnail:hover {
+    transform: scale(4);
+}
