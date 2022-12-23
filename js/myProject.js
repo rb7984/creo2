@@ -22,10 +22,14 @@ camera.lookAt(0,0,0);
 const light = new th.AmbientLight( 0x404040, 20);
 scene.add(light);
 
+window.addEventListener('mousedown',function() {
+    camera.position.z = 14;
+})
+
 function animate() {
 	requestAnimationFrame( animate );
-	cube.rotation.x += 0.01;
-	cube.rotation.y += 0.01;
+	// cube.rotation.x += 0.01;
+	// cube.rotation.y += 0.01;
 	renderer.render( scene, camera );
 };
 
