@@ -19,14 +19,14 @@ const cube = new th.Mesh( geometry, material );
 scene.add( cube );
 
 camera.position.set(5,5,5);
-camera.lookAt(0,0,0);
+// camera.lookAt(0,0,0);
 
 // const light = new th.AmbientLight( 0x404040, 20);
 // scene.add(light);
 
-window.addEventListener('mousedown',function() {
-    camera.position.z = 14;
-})
+// window.addEventListener('mousedown',function() {
+//     camera.position.z = 14;
+// })
 
 function animate() {
 	requestAnimationFrame( animate );
