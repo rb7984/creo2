@@ -31,6 +31,7 @@ camera.position.set(5,5,5);
 camera.lookAt(0,0,0);
 
 const light = new THREE.AmbientLight( 0x404040, 4.5);
+light.castShadow = true;
 scene.add(light);
 const lightDir = new THREE.DirectionalLight(0x404040, 2);
 lightDir.position.set(20,20,20);
@@ -43,10 +44,14 @@ scene.add(lightDir);
 const controls = new OrbitControls(camera, renderer.domElement);
 
 const fbxLoader = new FBXLoader();
-fbxLoader.load('../assets/stand2.fbx',
-(object) => {
+fbxLoader.load('../assets/stand2.fbx', (object) => {
+    object.traverse( function( node ) { 
+        if ( node instanceof THREE.Mesh ) { 
+            node.castShadow = true; 
+            node.receiveShadow = true;
+            node.material.side = THREE.DoubleSide;
+        } } );
     object.translateY(0.01);
-    object.castShadow = true;
     scene.add(object)
 }
 );

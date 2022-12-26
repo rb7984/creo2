@@ -1,11 +1,33 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="utf-8">
         <title>creo2</title>
-
-
+        <link rel = 'stylesheet' href = 'css/styles.css'>
+        <script src="js/functions.js"></script>
+        
     </head>
+
     <body>
+        <nav class = "sidebar">
+            <div class = "text">Controls</div>
+            <ul style = 'color: white;'>
+                <li>Furniture
+                    <ul>
+                        <li class = 'product'> Chair
+                            <button onclick ='add(0)'class = 'add-button'> Add </button>
+                        </li>
+                        <li class = 'product'>Table
+                            <button class = 'add-button'> Add </button>
+                        </li>
+                        <li class = 'product'>Other
+                            <button class = 'add-button'> Add </button>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+
         <script src="js/three.js"></script>
         <script type = 'module' src = "./js/myProject.js"></script>
 
