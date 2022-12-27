@@ -2,6 +2,7 @@ import * as THREE from './three.module.js';
 import {OrbitControls} from './OrbitControls.js';
 import {FBXLoader} from './FBXLoader.js';
 
+const container = document.querySelector('#scene-container');
 export const scene = new THREE.Scene();
 
 const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
@@ -9,9 +10,20 @@ const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.inner
 const renderer = new THREE.WebGLRenderer();
 renderer.shadowMap.enabled = true;
 renderer.setClearColor("#ededed");
-renderer.setSize( window.innerWidth, window.innerHeight );
 
-document.body.appendChild( renderer.domElement );
+renderer.setSize( container.clientWidth, container.clientHeight );
+renderer.setPixelRatio(window.devicePixelRatio);
+container.append(renderer.domElement);
+//renderer.setSize( window.innerWidth, window.innerHeight );
+//document.body.appendChild( renderer.domElement );
+
+window.addEventListener( 'resize', onWindowResize, false );
+
+function onWindowResize(){
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize( window.innerWidth, window.innerHeight );
+}
 
 var axes = new THREE.AxesHelper(5);
 const grid = new THREE.GridHelper(20,10,'#ffffff','#ffffff');
@@ -43,7 +55,7 @@ scene.add(lightDir);
 const controls = new OrbitControls(camera, renderer.domElement);
 
 const fbxLoader = new FBXLoader();
-fbxLoader.load('../assets/stand2.fbx', (object) => {
+fbxLoader.load('../assets/stand.fbx', (object) => {
     object.traverse( function( node ) { 
         if ( node instanceof THREE.Mesh ) { 
             node.castShadow = true; 
@@ -55,22 +67,39 @@ fbxLoader.load('../assets/stand2.fbx', (object) => {
 }
 );
 
-document.getElementById('btn').onclick = function () {
-    adding()
-};
+// Add - Buttons
+var buttonsArray = [3];
 
-function adding()
-{    
-    var g = new THREE.BoxGeometry(2,2,2);
-    var m = new THREE.MeshStandardMaterial({ color: '#a18787', side: THREE.DoubleSide });
-    var b = new THREE.Mesh(g, m);
+for (let i = 0; i < buttonsArray.length; i++) {
+    for (let j = 0; j < buttonsArray[i]; j++) {
+        let id = 'btn-' + i.toString() + '-' + j.toString();
+        let file = i.toString() + '-' + j.toString();
+        document.getElementById(id).onclick = function () {
+            addRB(file);
+        };        
+    }
+}
+
+function addRB(a)
+{
+    var path = '../assets/' + a + '.fbx';
     
-    scene.add(b)
+    fbxLoader.load(path, (object) => {
+        object.traverse( function( node ) { 
+            if ( node instanceof THREE.Mesh ) { 
+                node.castShadow = true; 
+                node.receiveShadow = true;
+                node.material.side = THREE.DoubleSide;
+            } } );
+        object.translateY(3);
+        scene.add(object)
+    }
+    );
 }
 
 function animate() {
 	requestAnimationFrame( animate );
-
+    
     controls.update();
 	renderer.render( scene, camera );
 };

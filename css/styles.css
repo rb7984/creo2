@@ -1,15 +1,22 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
 
 body {
-  margin: 0;
+    margin: 0;
+}
+
+#scene-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: skyblue;
 }
 
 *{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  user-select: none;
-  font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+    font-family: 'Poppins', sans-serif;
 }
 
 .sidebar{
@@ -18,6 +25,7 @@ body {
     height: 100%;
     left: 0;
     background: #1b1b1b;
+    z-index: 2;
 }
 
 .sidebar .text{
@@ -60,15 +68,15 @@ nav ul li span {
 
 /* 
 nav{
-  position: absolute;
-  top: 20%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: #1b1b1b;
-  width: 400px;
-  line-height: 40px;
-  padding: 8px 25px;
-  border-radius: 5px;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #1b1b1b;
+    width: 400px;
+    line-height: 40px;
+    padding: 8px 25px;
+    border-radius: 5px;
 }
 
 nav label{
@@ -77,10 +85,10 @@ nav label{
     font-weight: 500;
     display: block;
     cursor: pointer;
-  }
-  
-  }
-  nav .menu:before{
+    }
+    
+    }
+    nav .menu:before{
     position: absolute;
     content: '';
     height: 20px;
@@ -90,43 +98,43 @@ nav label{
     top: -10px;
     transform: rotate(45deg);
     z-index: -1;
-  }
+    }
 
-  nav ul li label{
+    nav ul li label{
     font-size: 18px;
-  }
-  nav ul li a{
+    }
+    nav ul li a{
     color: white;
     text-decoration: none;
     font-size: 18px;
     display: block;
-  }
-  nav ul li a:hover,
-  nav ul li label:hover{
+    }
+    nav ul li a:hover,
+    nav ul li label:hover{
     color: cyan;
-  }
-  nav ul ul{
+    }
+    nav ul ul{
     position: static;
-  }
-  nav ul ul li{
+    }
+    nav ul ul li{
     line-height: 30px;
     padding-left: 30px;
     border-bottom: none;
-  }
-  nav ul ul li a{
+    }
+    nav ul ul li a{
     color: #e6e6e6;
     font-size: 17px;
-  }
-  nav ul li span{
+    }
+    nav ul li span{
     font-size: 20px;
     float: right;
     margin-top: 10px;
     padding: 0 10px;
     transition: 0.5s;
-  }
-  nav ul li span.rotate{
+    }
+    nav ul li span.rotate{
     transform: rotate(-180deg);
-  }
-  input{
+    }
+    input{
     display: none;
   } */
