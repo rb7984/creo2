@@ -1,9 +1,8 @@
 import * as THREE from './three.module.js';
 import {OrbitControls} from './OrbitControls.js';
 import {FBXLoader} from './FBXLoader.js';
-import { MTLLoader } from './MTLLoader.js'
 
-const scene = new THREE.Scene();
+export const scene = new THREE.Scene();
 
 const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
 
@@ -56,11 +55,18 @@ fbxLoader.load('../assets/stand2.fbx', (object) => {
 }
 );
 
+export function adding() {
+
+    var g = new THREE.BoxGeometry(10,10,10);
+    var m = new THREE.MeshStandardMaterial({ color: '#a18787', side: THREE.DoubleSide });
+    var b = new THREE.Mesh(g, m);
+
+    scene.add(b)
+}
+
 function animate() {
 	requestAnimationFrame( animate );
 
-	// cube.rotation.x += 0.01;
-	// cube.rotation.y += 0.01;
     controls.update();
 	renderer.render( scene, camera );
 };
