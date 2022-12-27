@@ -69,20 +69,20 @@ fbxLoader.load('../assets/stand.fbx', (object) => {
 
 // Add - Buttons
 var buttonsArray = [3];
+var countarray = [[0,0]];
 
 for (let i = 0; i < buttonsArray.length; i++) {
     for (let j = 0; j < buttonsArray[i]; j++) {
         let id = 'btn-' + i.toString() + '-' + j.toString();
-        let file = i.toString() + '-' + j.toString();
         document.getElementById(id).onclick = function () {
-            addRB(file);
+            addRB(i,j);
         };        
     }
 }
 
-function addRB(a)
+function addRB(i,j)
 {
-    var path = '../assets/' + a + '.fbx';
+    var path = '../assets/' + + i.toString() + '-' + j.toString() + '.fbx';
     
     fbxLoader.load(path, (object) => {
         object.traverse( function( node ) { 
@@ -91,10 +91,14 @@ function addRB(a)
                 node.receiveShadow = true;
                 node.material.side = THREE.DoubleSide;
             } } );
-        object.translateY(3);
+
+        object.translateX(5);
         scene.add(object)
     }
     );
+    countarray[i][j] ++;
+
+
 }
 
 function animate() {

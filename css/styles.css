@@ -19,6 +19,28 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
+.counter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 150px;
+    height: 50px;
+    right: 20px;
+    bottom: 20px;
+    background: #666fef;
+    z-index: 3;
+    border-radius: 30px;
+    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset,
+    rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset,
+    rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset,
+    rgba(0, 0, 0, 0.06) 0px 2px 1px,
+    rgba(0, 0, 0, 0.09) 0px 4px 2px,
+    rgba(0, 0, 0, 0.09) 0px 8px 4px,
+    rgba(0, 0, 0, 0.09) 0px 16px 8px,
+    rgba(0, 0, 0, 0.09) 0px 32px 16px;
+}
+
 .sidebar{
     position: fixed;
     width: 250px;
@@ -46,6 +68,18 @@ body {
     column-gap: 0.75rem;
 }
 
+.add-button {
+    border-radius: 25px;
+    box-shadow: rgba(0, 0, 0, 0.17) 0px -2px 2px 0px inset,
+    rgba(0, 0, 0, 0.15) 0px -2px 2px 0px inset,
+    rgba(0, 0, 0, 0.1) 0px -2px 2px 0px inset,
+    rgba(0, 0, 0, 0.06) 0px 2px 1px,
+    rgba(0, 0, 0, 0.09) 0px 4px 2px,
+    rgba(0, 0, 0, 0.09) 0px 8px 4px,
+    rgba(0, 0, 0, 0.09) 0px 16px 8px,
+    rgba(0, 0, 0, 0.09) 0px 2px 2px;
+}
+
 nav ul{
     background: #1b1b1b;
     list-style: none;
@@ -65,76 +99,3 @@ nav ul li span {
     position: absolute;
     ;
 }
-
-/* 
-nav{
-    position: absolute;
-    top: 20%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: #1b1b1b;
-    width: 400px;
-    line-height: 40px;
-    padding: 8px 25px;
-    border-radius: 5px;
-}
-
-nav label{
-    color: white;
-    font-size: 22px;
-    font-weight: 500;
-    display: block;
-    cursor: pointer;
-    }
-    
-    }
-    nav .menu:before{
-    position: absolute;
-    content: '';
-    height: 20px;
-    width: 20px;
-    background: #1b1b1b;
-    right: 20px;
-    top: -10px;
-    transform: rotate(45deg);
-    z-index: -1;
-    }
-
-    nav ul li label{
-    font-size: 18px;
-    }
-    nav ul li a{
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-    display: block;
-    }
-    nav ul li a:hover,
-    nav ul li label:hover{
-    color: cyan;
-    }
-    nav ul ul{
-    position: static;
-    }
-    nav ul ul li{
-    line-height: 30px;
-    padding-left: 30px;
-    border-bottom: none;
-    }
-    nav ul ul li a{
-    color: #e6e6e6;
-    font-size: 17px;
-    }
-    nav ul li span{
-    font-size: 20px;
-    float: right;
-    margin-top: 10px;
-    padding: 0 10px;
-    transition: 0.5s;
-    }
-    nav ul li span.rotate{
-    transform: rotate(-180deg);
-    }
-    input{
-    display: none;
-  } */
