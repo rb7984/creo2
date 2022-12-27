@@ -55,12 +55,16 @@ fbxLoader.load('../assets/stand2.fbx', (object) => {
 }
 );
 
-export function adding() {
+document.getElementById('btn').onclick = function () {
+    adding()
+};
 
-    var g = new THREE.BoxGeometry(10,10,10);
+function adding()
+{    
+    var g = new THREE.BoxGeometry(2,2,2);
     var m = new THREE.MeshStandardMaterial({ color: '#a18787', side: THREE.DoubleSide });
     var b = new THREE.Mesh(g, m);
-
+    
     scene.add(b)
 }
 
