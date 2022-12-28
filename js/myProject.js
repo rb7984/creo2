@@ -121,20 +121,30 @@ function addRB(i,j) {
         object.translateX(5);
         
         // Interaction
-        object.addEventListener('click', (event) => {
-            event.target.scale.set(2.0, 2.0, 2.0);
-        });
+        // object.addEventListener('click', (event) => {
+        //     event.target.scale.set(2.0, 2.0, 2.0);
+        // });
         object.addEventListener('mouseover', (event) => {
+            setTimeout(makeDiv, 250);
+            
+            function makeDiv(){
             var div = document.createElement("div");
             div.innerHTML = "Contextual-Menu";
             div.setAttribute('class', 'contextual-menu');
             div.setAttribute('id', 'contextual-menu');
+            
             document.body.appendChild(div);
+            }
         });
         object.addEventListener('mouseout', (event) => {
+            setTimeout(makeDiv, 1000);
+            
+            function makeDiv(){
             var element = document.getElementById("contextual-menu");
             element.parentNode.removeChild(element);
+            }
         })
+
         interactionManager.add(object);
         
         scene.add(object)

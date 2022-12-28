@@ -44,15 +44,15 @@ body {
 .contextual-menu {
     display: flex;
     justify-content: center;
-    align-items: center;
+    /* align-items: center; */
     position: absolute;
     width: 150px;
-    height: 50px;
-    right: 50%;
-    bottom: 50%;
+    height: 250px;
+    right: 10%;
+    top: 10%;
     background: #d17db1;
     z-index: 4;
-    border-radius: 30px;
+    border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset,
     rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset,
     rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset,
