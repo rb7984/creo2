@@ -7,14 +7,17 @@ export const scene = new THREE.Scene();
 
 const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
 
+camera.position.set(5,5,5);
+camera.lookAt(0,0,0);
+
 const renderer = new THREE.WebGLRenderer();
 renderer.shadowMap.enabled = true;
 renderer.setClearColor("#ededed");
 
-renderer.setSize( container.clientWidth, container.clientHeight );
+// renderer.setSize( container.clientWidth, container.clientHeight );
+renderer.setSize( window.innerWidth, window.innerHeight );
 renderer.setPixelRatio(window.devicePixelRatio);
 container.append(renderer.domElement);
-//renderer.setSize( window.innerWidth, window.innerHeight );
 //document.body.appendChild( renderer.domElement );
 
 window.addEventListener( 'resize', onWindowResize, false );
@@ -25,10 +28,12 @@ function onWindowResize(){
     renderer.setSize( window.innerWidth, window.innerHeight );
 }
 
-var axes = new THREE.AxesHelper(5);
-const grid = new THREE.GridHelper(20,10,'#ffffff','#ffffff');
-scene.add(axes);
-scene.add(grid);
+//Axes Helpers
+
+// var axes = new THREE.AxesHelper(5);
+// const grid = new THREE.GridHelper(20,10,'#ffffff','#ffffff');
+// scene.add(axes);
+// scene.add(grid);
 
 var g2 = new THREE.PlaneBufferGeometry(2000, 2000, 8, 8);
 var m2 = new THREE.MeshStandardMaterial({ color: '#a18787', side: THREE.DoubleSide });
@@ -38,19 +43,30 @@ plane.receiveShadow = true;
 
 scene.add(plane);
 
-camera.position.set(5,5,5);
-camera.lookAt(0,0,0);
+//Lights
 
 const light = new THREE.AmbientLight( 0x404040, 4.5);
 light.castShadow = true;
 scene.add(light);
-const lightDir = new THREE.DirectionalLight(0x404040, 2);
-lightDir.position.set(20,20,20);
-lightDir.lookAt(0,0,0);
-lightDir.castShadow = true;
-const dlsh = new THREE.CameraHelper(lightDir.shadow.camera);
-scene.add(dlsh);
-scene.add(lightDir);
+
+const lightPoint = new THREE.PointLight( 0xff0000, 2, 30 );
+lightPoint.position.set(0,15,0);
+lightPoint.lookAt(0,0,0);
+lightPoint.castShadow = true;
+scene.add(lightPoint);
+
+// const lightDir = new THREE.DirectionalLight(0x404040, 2);
+// lightDir.position.set(20,20,20);
+// lightDir.lookAt(0,0,0);
+// lightDir.castShadow = true;
+// scene.add(lightDir);
+
+// Lights Helper
+
+// const dlsh = new THREE.CameraHelper(lightDir.shadow.camera);
+// scene.add(dlsh);
+
+//Controls
 
 const controls = new OrbitControls(camera, renderer.domElement);
 
@@ -70,6 +86,7 @@ fbxLoader.load('../assets/stand.fbx', (object) => {
 // Add - Buttons
 var buttonsArray = [3];
 var countarray = [[0,0]];
+let price = 1000;
 
 for (let i = 0; i < buttonsArray.length; i++) {
     for (let j = 0; j < buttonsArray[i]; j++) {
@@ -80,8 +97,7 @@ for (let i = 0; i < buttonsArray.length; i++) {
     }
 }
 
-function addRB(i,j)
-{
+function addRB(i,j) {
     var path = '../assets/' + + i.toString() + '-' + j.toString() + '.fbx';
     
     fbxLoader.load(path, (object) => {
@@ -98,7 +114,14 @@ function addRB(i,j)
     );
     countarray[i][j] ++;
 
+    document.getElementById('counter').innerHTML = CalculatePrice(i, j).toString() + ' €';
 
+}
+
+function CalculatePrice(i, j) {
+
+    price += 100;
+    return price;
 }
 
 function animate() {
