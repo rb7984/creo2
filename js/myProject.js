@@ -1,6 +1,7 @@
 import * as THREE from './three.module.js';
 import {OrbitControls} from './OrbitControls.js';
 import {FBXLoader} from './FBXLoader.js';
+import {InteractionManager} from './three.interactive.js';
 
 const container = document.querySelector('#scene-container');
 export const scene = new THREE.Scene();
@@ -34,6 +35,14 @@ function onWindowResize(){
 // const grid = new THREE.GridHelper(20,10,'#ffffff','#ffffff');
 // scene.add(axes);
 // scene.add(grid);
+
+// INteraction Manager
+
+const interactionManager = new InteractionManager(
+    renderer,
+    camera,
+    renderer.domElement
+);
 
 var g2 = new THREE.PlaneBufferGeometry(2000, 2000, 8, 8);
 var m2 = new THREE.MeshStandardMaterial({ color: '#a18787', side: THREE.DoubleSide });
