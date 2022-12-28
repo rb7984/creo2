@@ -54,11 +54,11 @@ scene.add(plane);
 
 //Lights
 
-const light = new THREE.AmbientLight( 0x404040, 4.5);
+const light = new THREE.AmbientLight( 0xdedede, 1.5);
 light.castShadow = true;
 scene.add(light);
 
-const lightPoint = new THREE.PointLight( 0xff0000, 2, 30 );
+const lightPoint = new THREE.PointLight( 0xdedede, 2, 30 );
 lightPoint.position.set(0,15,0);
 lightPoint.lookAt(0,0,0);
 lightPoint.castShadow = true;
@@ -114,17 +114,35 @@ function addRB(i,j) {
             if ( node instanceof THREE.Mesh ) { 
                 node.castShadow = true; 
                 node.receiveShadow = true;
+                
                 node.material.side = THREE.DoubleSide;
             } } );
-
+        
         object.translateX(5);
+        
+        // Interaction
+        object.addEventListener('click', (event) => {
+            event.target.scale.set(2.0, 2.0, 2.0);
+        });
+        object.addEventListener('mouseover', (event) => {
+            var div = document.createElement("div");
+            div.innerHTML = "Contextual-Menu";
+            div.setAttribute('class', 'contextual-menu');
+            div.setAttribute('id', 'contextual-menu');
+            document.body.appendChild(div);
+        });
+        object.addEventListener('mouseout', (event) => {
+            var element = document.getElementById("contextual-menu");
+            element.parentNode.removeChild(element);
+        })
+        interactionManager.add(object);
+        
         scene.add(object)
     }
     );
     countarray[i][j] ++;
-
+    
     document.getElementById('counter').innerHTML = CalculatePrice(i, j).toString() + ' €';
-
 }
 
 function CalculatePrice(i, j) {
@@ -136,6 +154,7 @@ function CalculatePrice(i, j) {
 function animate() {
 	requestAnimationFrame( animate );
     
+    interactionManager.update();
     controls.update();
 	renderer.render( scene, camera );
 };
